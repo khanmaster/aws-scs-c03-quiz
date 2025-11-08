@@ -1,0 +1,202 @@
+name: Deploy Quiz Platform
+
+on:
+  push:
+    branches: [main, dev, qa]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Validate JSON files
+        run: |
+          echo "Validating JSON files..."
+          for file in data/*.json; do
+            if [ -f "$file" ]; then
+              echo "Validating $file"
+              python -m json.tool "$file" > /dev/null
+            fi
+          done
+
+      - name: Check HTML validity
+        run: |
+          echo "Checking HTML files..."
+          # Basic HTML validation
+          for file in *.html; do
+            if [ -f "$file" ]; then
+              echo "Checking $file"
+              # Check for basic HTML structure
+              grep -q "<!DOCTYPE html>" "$file" || (echo "Missing DOCTYPE in $file" && exit 1)
+              grep -q "<html" "$file" || (echo "Missing html tag in $file" && exit 1)
+              grep -q "</html>" "$file" || (echo "Missing closing html tag in $file" && exit 1)
+            fi
+          done
+
+      - name: Lint JavaScript
+        run: |
+          echo "Linting JavaScript files..."
+          # Basic JS syntax check
+          for file in js/*.js; do
+            if [ -f "$file" ]; then
+              echo "Checking $file"
+              node -c "$file"
+            fi
+          done
+
+      - name: Test question data integrity
+        run: |
+          echo "Testing question data..."
+          python3 << 'EOF'
+          import json
+          import sys
+
+          try:
+              with open('data/questions.json', 'r') as f:
+                  data = json.load(f)
+              
+              questions = data.get('questions', [])
+              if not questions:
+                  print("No questions found!")
+                  sys.exit(1)
+              
+              for i, q in enumerate(questions):
+                  required_fields = ['id', 'type', 'question', 'options', 'correct', 'explanation']
+                  for field in required_fields:
+                      if field not in q:
+                          print(f"Question {i+1} missing field: {field}")
+                          sys.exit(1)
+                  
+                  if q['type'] not in ['single', 'multiple']:
+                      print(f"Question {i+1} has invalid type: {q['type']}")
+                      sys.exit(1)
+                  
+                  if not isinstance(q['options'], list) or len(q['options']) < 2:
+                      print(f"Question {i+1} needs at least 2 options")
+                      sys.exit(1)
+              
+              print(f"✅ Validated {len(questions)} questions successfully")
+          
+          except Exception as e:
+              print(f"❌ Question validation failed: {e}")
+              sys.exit(1)
+          EOF
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Security scan
+        run: |
+          echo "Running security checks..."
+          
+          # Check for sensitive data patterns
+          echo "Checking for sensitive patterns..."
+          if grep -r -i "password\|secret\|key\|token" --include="*.js" --include="*.html" --include="*.json" . | grep -v "// " | grep -v "<!-- " | grep -v "explanation" | grep -v "keywords" | grep -v "KMS" | grep -v "CMK" | grep -v "IAM" | grep -v "quiz" | grep -v "question" | grep -v "data/questions.json" | grep -v "localStorage" | grep -v "Object.keys" | grep -v "STORAGE_KEYS" | grep -v "get(key)" | grep -v "set(key" | grep -v "remove(key)" | grep -v "KEYWORD_HIGHLIGHT"; then
+            echo "❌ Potential sensitive data found"
+            exit 1
+          fi
+          
+          # Check for hardcoded URLs (except localhost)
+          echo "Checking for hardcoded URLs..."
+          if grep -r "https\?://" --include="*.js" --include="*.html" . | grep -v "localhost" | grep -v "example.com" | grep -v "github.com"; then
+            echo "⚠️ Hardcoded URLs found - review for production readiness"
+          fi
+          
+          echo "✅ Security scan completed"
+
+  deploy:
+    needs: [build-and-test, security-scan]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Determine environment
+        id: env
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "environment=prod" >> $GITHUB_OUTPUT
+            echo "domain_name=${{ vars.PROD_DOMAIN_NAME }}" >> $GITHUB_OUTPUT
+            echo "branch_name=main" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == "refs/heads/qa" ]]; then
+            echo "environment=qa" >> $GITHUB_OUTPUT
+            echo "domain_name=${{ vars.QA_DOMAIN_NAME }}" >> $GITHUB_OUTPUT
+            echo "branch_name=qa" >> $GITHUB_OUTPUT
+          else
+            echo "environment=dev" >> $GITHUB_OUTPUT
+            echo "domain_name=${{ vars.DEV_DOMAIN_NAME }}" >> $GITHUB_OUTPUT
+            echo "branch_name=dev" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.0
+
+      - name: Generate Terraform variables
+        env:
+          DOMAIN_NAME: ${{ steps.env.outputs.domain_name }}
+          ENVIRONMENT: ${{ steps.env.outputs.environment }}
+          BRANCH_NAME: ${{ steps.env.outputs.branch_name }}
+          APP_NAME: "aws-scs-quiz"
+          REPOSITORY_NAME: ${{ github.repository }}
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: |
+          cd terraform
+          envsubst < environments/environments.tfvars > ${{ steps.env.outputs.environment }}.tfvars
+          echo "Generated terraform variables for ${{ steps.env.outputs.environment }}"
+          cat ${{ steps.env.outputs.environment }}.tfvars
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+
+      - name: Terraform Plan
+        env:
+          TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd terraform
+          terraform plan -var-file="${{ steps.env.outputs.environment }}.tfvars"
+
+      - name: Terraform Apply
+        if: github.event_name == 'push'
+        env:
+          TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd terraform
+          terraform apply -auto-approve -var-file="${{ steps.env.outputs.environment }}.tfvars"
+
+      - name: Deploy to GitHub Pages
+        if: steps.env.outputs.environment == 'prod'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          exclude_assets: '.github,terraform,*.md'
+
+      - name: Deployment Summary
+        run: |
+          echo "## Deployment Summary 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: ${{ steps.env.outputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: ${{ steps.env.outputs.branch_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Domain**: ${{ steps.env.outputs.domain_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY

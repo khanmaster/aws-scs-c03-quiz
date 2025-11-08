@@ -1,0 +1,289 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple",
+      "question": "A business requires a forensic logging solution for hundreds of Docker-based apps running on Amazon EC2. The solution must analyze logs in real time, provide message replay, and persist logs. Which AWS services should be employed to satisfy these requirements? (Select TWO)",
+      "options": [
+        "Amazon CloudWatch Logs",
+        "Amazon Kinesis Data Streams",
+        "Amazon SQS",
+        "Amazon S3"
+      ],
+      "correct": [1, 3],
+      "explanation": "✅ Correct: B - Real-time stream processing with replay capabilities; D - Persistent storage of logs. ❌ Incorrect: A - CloudWatch is for monitoring, not forensic replay; C - SQS is not designed for log persistence + replay.",
+      "keywords": ["forensic", "logging", "Docker", "EC2", "real time", "replay"]
+    },
+    {
+      "id": 2,
+      "type": "single",
+      "question": "A company developed an application by using AWS Lambda, Amazon S3, Amazon SNS, and Amazon DynamoDB. The data includes PII. The company must remove data that is older than 30 days from the S3 bucket and the DynamoDB table. Which solution will meet this requirement with the MOST operational efficiency?",
+      "options": [
+        "Use a Lambda function to scan and delete records every 30 days.",
+        "Use S3 lifecycle policies and DynamoDB TTL.",
+        "Use CloudWatch Events to schedule cleanup scripts.",
+        "Enable S3 Intelligent-Tiering and DynamoDB Auto Scaling."
+      ],
+      "correct": [1],
+      "explanation": "✅ Correct: B - S3 lifecycle policies automatically remove old objects; DynamoDB TTL deletes expired items. ❌ Incorrect: A and C add complexity; D does not handle deletion.",
+      "keywords": ["Lambda", "S3", "SNS", "DynamoDB", "PII", "30 days"]
+    },
+    {
+      "id": 3,
+      "type": "multiple",
+      "question": "A company is hosting a static website on Amazon S3 and serving it via CloudFront. The company has associated a WAF web ACL to restrict requests to the United States. They are worried that the S3 URL might still be directly accessible. Which combination of steps should the company take to remove direct access to the S3 URL? (Select TWO)",
+      "options": [
+        "Configure an S3 bucket policy to allow access only from the CloudFront Origin Access Identity (OAI).",
+        "Enable versioning on the S3 bucket.",
+        "Use an S3 bucket ACL to block all public access.",
+        "Use an origin access control (OAC) with signed URLs."
+      ],
+      "correct": [0, 3],
+      "explanation": "✅ Correct: A - Bucket policy + OAI ensures only CloudFront can fetch from S3; D - Origin access control (OAC) with signed URLs adds further restriction. ❌ Incorrect: B - Versioning is unrelated; C - ACL is less effective than bucket policy.",
+      "keywords": ["S3", "CloudFront", "WAF", "direct access", "URL"]
+    },
+    {
+      "id": 4,
+      "type": "multiple",
+      "question": "An organization receives an alert that indicates that an EC2 instance behind an ELB Classic Load Balancer has been compromised. What techniques will limit lateral movement and allow evidence gathering? (Choose TWO)",
+      "options": [
+        "Remove the instance from the load balancer and terminate it.",
+        "Remove the instance from the load balancer, and shut down access to the instance by tightening the security group.",
+        "Reboot the instance and check for any Amazon CloudWatch alarms.",
+        "Stop the instance and make a snapshot of the root EBS volume."
+      ],
+      "correct": [1, 3],
+      "explanation": "✅ Correct: B - Restricting access prevents lateral movement while keeping the instance for evidence gathering; D - Stopping the instance and creating a snapshot preserves data for forensic analysis. ❌ Incorrect: A - Terminating the instance would destroy evidence; C - Rebooting may overwrite logs and does not prevent lateral movement.",
+      "keywords": ["compromised", "EC2", "ELB", "evidence gathering"]
+    },
+    {
+      "id": 5,
+      "type": "single",
+      "question": "A Development team has asked for help configuring IAM roles and policies in a new AWS account. The team expects to have hundreds of master keys and does not want to manage individual key policies. Which solution allows managing AWS KMS permissions in IAM without editing each key policy?",
+      "options": [
+        "The account's CMK key policy must allow the account's IAM roles to perform KMS EnableKey.",
+        "Newly created CMKs must have a key policy that allows the root principal to perform all actions.",
+        "Newly created CMKs must allow the root principal to perform the kms CreateGrant API operation.",
+        "Newly created CMKs must mirror the IAM policy of the KMS key administrator."
+      ],
+      "correct": [2],
+      "explanation": "✅ Correct: C - Allowing the root principal to create grants enables IAM policies to control access without editing each key policy. ❌ Incorrect: A - EnableKey alone does not provide the needed granular IAM control; B - Giving full access to root is not recommended for managing multiple keys; D - Mirroring IAM policy is not sufficient to control all CMKs programmatically.",
+      "keywords": ["KMS", "CMK", "IAM", "CreateGrant"]
+    },
+    {
+      "id": 6,
+      "type": "multiple",
+      "question": "An Amazon EC2 instance is part of an Auto Scaling group behind an ALB and is suspected of compromise. Which steps should be taken to investigate? (Choose FOUR)",
+      "options": [
+        "Detach the elastic network interface from the EC2 instance.",
+        "Initiate an EBS volume snapshot of all volumes on the EC2 instance.",
+        "Disable any Amazon Route 53 health checks associated with the EC2 instance.",
+        "De-register the EC2 instance from the ALB and detach it from the Auto Scaling group.",
+        "Attach a security group that has restrictive ingress and egress rules to the EC2 instance.",
+        "Add a rule to an AWS WAF to block access to the EC2 instance."
+      ],
+      "correct": [0, 1, 3, 4],
+      "explanation": "✅ Correct: A - Detaching the network interface prevents further lateral movement; B - Snapshotting volumes preserves evidence for analysis; D - Removing from ALB/Auto Scaling prevents impact on live traffic; E - Restrictive SG limits access and prevents further compromise. ❌ Incorrect: C - Health checks do not affect investigation or containment; F - WAF cannot isolate the instance for evidence collection.",
+      "keywords": ["EC2", "ALB", "Auto Scaling", "snapshot", "security group"]
+    },
+    {
+      "id": 7,
+      "type": "single",
+      "question": "A Security Engineer wants users to seamlessly encrypt S3 objects without touching keys directly. The solution must be highly scalable and allow immediate key deletion. Which solution meets these requirements?",
+      "options": [
+        "Use AWS KMS with AWS managed keys and ScheduleKeyDeletion API with PendingWindowInDays=0.",
+        "Use KMS with AWS imported key material and DeletelmportedKeyMaterial API.",
+        "Use AWS CloudHSM and PKCS11 API for key deletion.",
+        "Use Systems Manager Parameter Store and its API for deletion."
+      ],
+      "correct": [1],
+      "explanation": "✅ Correct: B - KMS with imported key material allows users to encrypt without direct key handling and delete imported key material immediately. ❌ Incorrect: A - ScheduleKeyDeletion for AWS managed keys cannot delete immediately; C - CloudHSM requires manual key management; D - Parameter Store is not intended for scalable S3 object encryption.",
+      "keywords": ["S3", "encryption", "KMS", "immediate deletion"]
+    },
+    {
+      "id": 8,
+      "type": "single",
+      "question": "An application uses Amazon Cognito to manage permissions. Customers must be suspended but still able to log in without making changes. Which approach meets these requirements while minimizing complexity?",
+      "options": [
+        "Create a new database field suspended_status and validate it in application logic.",
+        "Add suspended customers to a second Cognito user pool and update login flow.",
+        "Use Cognito Sync to push a suspension_status parameter and split IAM policies.",
+        "Modify the IAM roles attached to the user to remove all privileges."
+      ],
+      "correct": [3],
+      "explanation": "✅ Correct: D - Modify IAM roles allows login but removes permissions; uses AWS-native separation of authentication and authorization. ❌ Incorrect: A - Custom DB logic works but is less AWS-native and harder to maintain; B - Second user pool adds complexity; C - Cognito Sync is deprecated and unnecessary.",
+      "keywords": ["Cognito", "suspend", "IAM", "login"]
+    },
+    {
+      "id": 9,
+      "type": "multiple",
+      "question": "A company wants to centrally manage secrets for multiple EC2 instances across accounts using AWS. Which is the MOST secure and scalable method? (Choose TWO)",
+      "options": [
+        "Store secrets in S3 encrypted with AWS KMS and allow EC2 IAM roles access.",
+        "Use AWS Secrets Manager and attach IAM roles for cross-account access.",
+        "Hardcode secrets in EC2 UserData scripts.",
+        "Use Systems Manager Parameter Store (SecureString) with cross-account IAM role access."
+      ],
+      "correct": [1, 3],
+      "explanation": "✅ Correct: B - Secrets Manager scales across accounts, rotates secrets, and IAM roles provide secure access; D - Parameter Store SecureString supports encryption, cross-account access, and IAM-based management. ❌ Incorrect: A - S3 is less manageable and does not provide automatic rotation; C - Hardcoding secrets is insecure and unscalable.",
+      "keywords": ["Secrets Manager", "Parameter Store", "IAM", "EC2"]
+    },
+    {
+      "id": 10,
+      "type": "multiple",
+      "question": "An application uses an RDS database. The Security Engineer wants to ensure encryption at rest and enforce key rotation every 90 days without downtime. Which solution satisfies these requirements? (Choose TWO)",
+      "options": [
+        "Use AWS-managed KMS CMK with automatic rotation enabled.",
+        "Use customer-managed KMS CMK and manually rotate the key every 90 days.",
+        "Enable RDS encryption using AWS-managed KMS CMK.",
+        "Use Transparent Data Encryption (TDE) on RDS and rotate manually."
+      ],
+      "correct": [0, 2],
+      "explanation": "✅ Correct: A - AWS-managed CMK allows automatic rotation every 90 days without downtime; C - Enabling RDS encryption ensures data at rest is encrypted and integrated with KMS. ❌ Incorrect: B - Manual rotation can cause downtime and is error-prone; D - TDE is only available on certain engines and manual rotation adds complexity.",
+      "keywords": ["RDS", "encryption", "KMS", "rotation"]
+    },
+    {
+      "id": 11,
+      "type": "single",
+      "question": "Which method provides the strongest assurance that AWS Lambda code has not been tampered with after deployment?",
+      "options": [
+        "Enable AWS CloudTrail logging for Lambda invocations.",
+        "Enable Lambda code signing using an AWS Signer profile.",
+        "Require IAM role trust policies on Lambda execution role.",
+        "Enable VPC endpoint for Lambda."
+      ],
+      "correct": [1],
+      "explanation": "✅ Correct: B - Code signing ensures deployed Lambda code matches the signed artifact. ❌ Incorrect: A - CloudTrail logs invocations but does not guarantee code integrity; C - IAM trust policies control access but not code tampering; D - VPC endpoints secure network traffic, unrelated to code integrity.",
+      "keywords": ["Lambda", "code signing", "AWS Signer"]
+    },
+    {
+      "id": 12,
+      "type": "single",
+      "question": "A company must ensure that all S3 objects are encrypted automatically at upload. Which is the MOST scalable approach?",
+      "options": [
+        "Enable bucket default encryption using SSE-KMS with an AWS-managed key.",
+        "Use client-side encryption before uploading to S3.",
+        "Add Lambda triggers to encrypt objects post-upload.",
+        "Require developers to encrypt objects manually."
+      ],
+      "correct": [0],
+      "explanation": "✅ Correct: A - Default bucket encryption ensures all new objects are encrypted automatically at scale. ❌ Incorrect: B - Client-side encryption is harder to manage and less scalable; C - Post-upload encryption adds latency and complexity; D - Manual encryption is error-prone and not scalable.",
+      "keywords": ["S3", "encryption", "SSE-KMS", "default"]
+    },
+    {
+      "id": 13,
+      "type": "single",
+      "question": "Which AWS service provides centralized auditing of API calls and user activity across accounts, regions, and services?",
+      "options": [
+        "AWS Config",
+        "AWS CloudTrail",
+        "Amazon GuardDuty",
+        "AWS CloudWatch"
+      ],
+      "correct": [1],
+      "explanation": "✅ Correct: B - CloudTrail provides centralized logging of all API calls and user activity across AWS. ❌ Incorrect: A - Config tracks resource configurations, not API calls; C - GuardDuty detects threats but does not provide full audit logs; D - CloudWatch monitors metrics and logs, not complete API audit trails.",
+      "keywords": ["CloudTrail", "audit", "API calls"]
+    },
+    {
+      "id": 14,
+      "type": "single",
+      "question": "A company wants to restrict IAM role access for a third-party vendor assuming a role in their AWS account. Which step is the MOST effective to prevent unauthorized access if the ARN is exposed?",
+      "options": [
+        "Create an IAM user with long-term credentials for the vendor.",
+        "Use an external ID in the role trust policy for the vendor.",
+        "Require multi-factor authentication in the trust policy.",
+        "Restrict role access to the vendor's IP range."
+      ],
+      "correct": [1],
+      "explanation": "✅ Correct: B - The external ID prevents unauthorized access even if the ARN is known. ❌ Incorrect: A - IAM user with long-term credentials is less secure and requires manual rotation; C - MFA is useful but does not fully mitigate ARN exposure risk for cross-account roles; D - IP restriction adds security but may fail if vendor IP changes or is spoofed.",
+      "keywords": ["IAM role", "external ID", "trust policy", "vendor"]
+    },
+    {
+      "id": 15,
+      "type": "multiple",
+      "question": "An IAM user cannot download objects from an S3 bucket encrypted with a KMS CMK, while other users can. Which policies should the Security Engineer check? (Choose THREE)",
+      "options": [
+        "The CMK policy",
+        "The VPC endpoint policy",
+        "The S3 bucket policy",
+        "The S3 ACL",
+        "The IAM policy"
+      ],
+      "correct": [0, 2, 4],
+      "explanation": "✅ Correct: A - CMK policy must allow the user to decrypt objects; C - S3 bucket policy may deny access to specific users; E - IAM policy must grant proper permissions to access objects and decrypt with KMS. ❌ Incorrect: B - VPC endpoint policy may restrict access but typically does not cause user-specific failures; D - ACLs are less commonly used; bucket policies and KMS are more likely causes.",
+      "keywords": ["S3", "CMK", "IAM", "bucket policy", "ACL"]
+    },
+    {
+      "id": 16,
+      "type": "single",
+      "question": "While analyzing the AWS account root user, what provides the highest level of security?",
+      "options": [
+        "Create a new IAM user with admin permissions; delete root password",
+        "Create a new IAM user; modify permissions of existing IAM users",
+        "Replace root access key; delete root password",
+        "Create a new IAM user with admin permissions; enable MFA for root"
+      ],
+      "correct": [3],
+      "explanation": "✅ Correct: D - New IAM admin user plus root MFA ensures highest security. ❌ Incorrect: A - Deleting root password is risky; MFA is critical; B - Modifying existing IAM users does not protect root access; C - Access key rotation alone does not secure root account.",
+      "keywords": ["root user", "IAM user", "MFA"]
+    },
+    {
+      "id": 17,
+      "type": "multiple",
+      "question": "Users need to authenticate via SAML to a web app with S3 static content, API Gateway, and DynamoDB. Which steps are required? (Choose THREE)",
+      "options": [
+        "Create custom authorization service with Lambda",
+        "Configure SAML IdP in Cognito to map attributes to user pool",
+        "Configure SAML IdP to add Cognito user pool as a relying party",
+        "Configure Cognito identity pool to integrate with social login",
+        "Update DynamoDB to store user email/password",
+        "Update API Gateway to use COGNITO_USER_POOLS authorizer"
+      ],
+      "correct": [1, 2, 5],
+      "explanation": "✅ Correct: B - Attribute mapping allows proper claims from SAML IdP; C - User pool must be a relying party for SAML authentication; F - API Gateway authorizer enforces user pool authentication for API calls. ❌ Incorrect: A - Custom Lambda authorization is unnecessary; D - Social login is unrelated; E - Storing passwords manually in DynamoDB violates SAML use.",
+      "keywords": ["SAML", "Cognito", "identity pool", "API Gateway", "user pool"]
+    },
+    {
+      "id": 18,
+      "type": "single",
+      "question": "Ping from on-premises host to EC2 fails. Flow log shows outbound rejected. What action allows the ping to succeed?",
+      "options": [
+        "Allow inbound ICMP in EC2 security group",
+        "Allow outbound ICMP in EC2 security group",
+        "Allow inbound ICMP in VPC NACL",
+        "Allow outbound ICMP in VPC NACL"
+      ],
+      "correct": [1],
+      "explanation": "✅ Correct: B - Outbound ICMP from EC2 security group allows ping replies to leave the instance. ❌ Incorrect: A - Inbound ICMP may already be allowed; the issue is outbound; C - NACL inbound may not be blocking; security group is primary issue; D - NACL outbound alone may not suffice if SG blocks outbound.",
+      "keywords": ["EC2", "ICMP", "security group", "VPC NACL"]
+    },
+    {
+      "id": 19,
+      "type": "single",
+      "question": "A Java app running on EC2 uses RDS MySQL. How should credentials be handled securely?",
+      "options": [
+        "Store in environment variables in EC2 UserData",
+        "Store in AWS Secrets Manager; EC2 IAM role access",
+        "Hardcode credentials in application properties",
+        "Store in S3 with encryption; download on startup"
+      ],
+      "correct": [1],
+      "explanation": "✅ Correct: B - Secrets Manager with IAM role access provides secure, auditable, and scalable credential management. ❌ Incorrect: A - Environment variables in UserData are insecure and exposed; C - Hardcoding is insecure and unmanageable; D - S3 retrieval adds latency and is less secure.",
+      "keywords": ["Secrets Manager", "EC2 IAM role", "RDS credentials"]
+    },
+    {
+      "id": 20,
+      "type": "multiple",
+      "question": "A Security Engineer must prevent accidental S3 bucket deletion. Which methods are effective? (Choose TWO)",
+      "options": [
+        "Enable S3 bucket versioning",
+        "Enable MFA delete",
+        "Add a bucket policy to deny delete action",
+        "Use client-side encryption"
+      ],
+      "correct": [0, 1],
+      "explanation": "✅ Correct: A - Versioning preserves objects even if deleted accidentally; B - MFA delete requires authentication for delete operations, preventing accidental deletion. ❌ Incorrect: C - Bucket policies alone may not prevent deletion if IAM user has full permissions; D - Encryption does not prevent deletion.",
+      "keywords": ["S3", "MFA delete", "versioning", "bucket deletion"]
+    }
+  ]
+}
