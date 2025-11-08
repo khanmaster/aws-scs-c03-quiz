@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS SCS-C03 Quiz</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="quiz-header">
+            <div class="quiz-info">
+                <h1>AWS Security Specialty Quiz</h1>
+                <div class="quiz-stats">
+                    <span id="questionProgress">Question 1 of 10</span>
+                    <span id="totalTimer">Total Time: 00:00</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="question-nav" id="questionNav">
+            <!-- Navigation will be generated dynamically -->
+        </nav>
+
+        <main class="quiz-content">
+            <div class="question-container" id="questionContainer">
+                <div class="question-header">
+                    <h3 id="questionTitle">Loading question...</h3>
+                    <div class="question-timer">
+                        <span>Question Time: </span>
+                        <span id="questionTimer">00:00</span>
+                    </div>
+                </div>
+
+                <div class="question-text" id="questionText">
+                    <!-- Question content will be loaded here -->
+                </div>
+
+                <div class="answer-options" id="answerOptions">
+                    <!-- Answer options will be loaded here -->
+                </div>
+
+                <div class="question-controls">
+                    <button id="showAnswerBtn" onclick="showAnswer()">Show Answer</button>
+                    <button id="keyWordsBtn" onclick="highlightKeywords()" style="display:none;">Key Words</button>
+                    <button id="resetBtn" onclick="resetQuestion()" style="display:none;">Reset</button>
+                </div>
+
+                <div class="explanation" id="explanation" style="display:none;">
+                    <!-- Explanation will be shown here -->
+                </div>
+
+                <div class="navigation-buttons">
+                    <button id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
+                    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+                    <button id="finishBtn" onclick="finishQuiz()" style="display:none;">Finish Quiz</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/question-loader.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/quiz-engine.js"></script>
+</body>
+</html>

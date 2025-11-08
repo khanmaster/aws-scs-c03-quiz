@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Security Specialty (SCS-C03) Quiz Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AWS Security Specialty Certification</h1>
+            <h2>Practice Quiz Platform</h2>
+        </header>
+
+        <main class="quiz-selection">
+            <div class="quiz-options">
+                <h3>Select Quiz Length</h3>
+                
+                <div class="quiz-card" data-questions="10">
+                    <h4>Quick Practice</h4>
+                    <p>10 Questions</p>
+                    <span class="duration">15-20 minutes</span>
+                    <button onclick="startQuiz(10)">Start Quiz</button>
+                </div>
+
+                <div class="quiz-card" data-questions="20">
+                    <h4>Standard Practice</h4>
+                    <p>20 Questions</p>
+                    <span class="duration">30-40 minutes</span>
+                    <button onclick="startQuiz(20)">Start Quiz</button>
+                </div>
+
+                <div class="quiz-card" data-questions="30">
+                    <h4>Extended Practice</h4>
+                    <p>30 Questions</p>
+                    <span class="duration">45-60 minutes</span>
+                    <button onclick="startQuiz(30)">Start Quiz</button>
+                </div>
+
+                <div class="quiz-card featured" data-questions="65">
+                    <h4>Full Practice Exam</h4>
+                    <p>65 Questions</p>
+                    <span class="duration">130 minutes</span>
+                    <button onclick="startQuiz(65)">Start Full Exam</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>AWS Security Specialty (SCS-C03) Practice Platform</p>
+        </footer>
+    </div>
+
+    <script src="js/quiz-config.js"></script>
+    <script>
+        function startQuiz(questionCount) {
+            localStorage.setItem('quizConfig', JSON.stringify({
+                questionCount: questionCount,
+                startTime: Date.now()
+            }));
+            window.location.href = 'quiz.html';
+        }
+    </script>
+</body>
+</html>

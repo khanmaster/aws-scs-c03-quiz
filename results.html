@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results - AWS SCS-C03</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Quiz Results</h1>
+        </header>
+
+        <main class="results-content">
+            <div class="results-summary" id="resultsSummary">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+
+            <div class="results-actions">
+                <button onclick="window.location.href='index.html'">Take Another Quiz</button>
+                <button onclick="reviewAnswers()">Review Answers</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>
