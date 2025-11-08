@@ -1,1 +1,236 @@
-IyBBV1MgU2VjdXJpdHkgU3BlY2lhbHR5IChTQ1MtQzAzKSBRdWl6IFBsYXRmb3JtCgpBIGNvbXByZWhlbnNpdmUsIGludGVyYWN0aXZlIHF1aXogcGxhdGZvcm0gZm9yIEFXUyBTZWN1cml0eSBTcGVjaWFsdHkgY2VydGlmaWNhdGlvbiBwcmVwYXJhdGlvbiB3aXRoIG11bHRpLWVudmlyb25tZW50IGRlcGxveW1lbnQgY2FwYWJpbGl0aWVzLgoKIyMg8J+agCBGZWF0dXJlcwoKLSAqKk11bHRpcGxlIFF1aXogTGVuZ3RocyoqOiAxMCwgMjAsIDMwLCBhbmQgNjUtcXVlc3Rpb24gb3B0aW9ucwotICoqSW50ZXJhY3RpdmUgTGVhcm5pbmcqKjogU2hvdyBBbnN3ZXIsIEtleSBXb3JkcyBoaWdobGlnaHRpbmcsIFJlc2V0IGZ1bmN0aW9uYWxpdHkKLSAqKkR1YWwgVGltZXIgU3lzdGVtKio6IFRvdGFsIHF1aXogdGltZSBhbmQgcGVyLXF1ZXN0aW9uIHRpbWluZwotICoqUHJvZ3Jlc3MgVHJhY2tpbmcqKjogTmF2aWdhdGlvbiBiZXR3ZWVuIHF1ZXN0aW9ucyB3aXRoIGNvbXBsZXRpb24gc3RhdHVzCi0gKipDb21wcmVoZW5zaXZlIFJlc3VsdHMqKjogRGV0YWlsZWQgYW5hbHl0aWNzIGFuZCBwZXJmb3JtYW5jZSBicmVha2Rvd24KLSAqKlJlc3BvbnNpdmUgRGVzaWduKio6IFdvcmtzIG9uIGRlc2t0b3AgYW5kIG1vYmlsZSBkZXZpY2VzCi0gKipNdWx0aS1FbnZpcm9ubWVudCBEZXBsb3ltZW50Kio6IERldiwgUUEsIGFuZCBQcm9kdWN0aW9uIGVudmlyb25tZW50cwoKIyMg8J+TgSBQcm9qZWN0IFN0cnVjdHVyZQoKYGBgCkFXUy1TQ1MtQzAzLwrilJzilIDilIAgaW5kZXguaHRtbCAgICAgICAgICAgICAgICAgIyBMYW5kaW5nIHBhZ2Ugd2l0aCBxdWl6IHNlbGVjdGlvbgrilJzilIDilIAgcXVpei5odG1sICAgICAgICAgICAgICAgICAgIyBNYWluIHF1aXogaW50ZXJmYWNlCuKUnOKUgOKUgCByZXN1bHRzLmh0bWwgICAgICAgICAgICAgICAjIFF1aXogcmVzdWx0cyBhbmQgYW5hbHl0aWNzCuKUnOKUgOKUgCBkYXRhLwrilIIgICDilJzilIDilIAgcXVlc3Rpb25zLmpzb24gICAgICAgICAjIE1hc3RlciBxdWVzdGlvbiBwb29sCuKUgiAgIOKUlOKUgOKUgCBjb25maWcuanNvbiAgICAgICAgICAgIyBRdWl6IGNvbmZpZ3VyYXRpb25zCuKUnOKUgOKUgCBqcy8K4pSCICAg4pSc4pSA4pSAIHF1aXotY29uZmlnLmpzICAgICAgICAgIyBRdWl6IGxlbmd0aCBtYW5hZ2VtZW50CuKUgiAgIOKUnOKUgOKUgCBxdWVzdGlvbi1sb2FkZXIuanMgICAgICMgUmFuZG9tIHNlbGVjdGlvbiBsb2dpYwrilIIgICDilJzilIDilIAgcXVpei1lbmdpbmUuanMgICAgICAgICAjIENvcmUgcXVpeiBmdW5jdGlvbmFsaXR5CuKUgiAgIOKUnOKUgOKUgCB0aW1lci5qcyAgICAgICAgICAgICAgIyBUaW1lciBzeXN0ZW0K4pSCICAg4pSc4pSA4pSAIHByb2dyZXNzLmpzICAgICAgICAgICAjIFByb2dyZXNzIHRyYWNraW5nCuKUgiAgIOKUlOKUgOKUgCByZXN1bHRzLmpzICAgICAgICAgICAgIyBSZXN1bHRzIG1hbmFnZW1lbnQK4pSc4pSA4pSAIGNzcy8K4pSCICAg4pSU4pSA4pSAIHN0eWxlcy5jc3MgICAgICAgICAgICAjIFVuaWZpZWQgc3R5bGluZwrilJzilIDilIAgdGVycmFmb3JtLwrilIIgICDilJzilIDilIAgbWFpbi50ZiAgICAgICAgICAgICAgICMgSW5mcmFzdHJ1Y3R1cmUgZGVmaW5pdGlvbgrilIIgICDilJTilIDilIAgZW52aXJvbm1lbnRzLwrilIIgICAgICAg4pSU4pSA4pSAIGVudmlyb25tZW50cy50ZnZhcnMgIyBUZW1wbGF0ZSB2YXJpYWJsZXMK4pSU4pSA4pSAIC5naXRodWIvd29ya2Zsb3dzLwogICAg4pSU4pSA4pSAIGRlcGxveS55bWwgICAgICAgICAgICAjIENJL0NEIHBpcGVsaW5lCmBgYAoKIyMg8J+OryBRdWl6IE9wdGlvbnMKCnwgUXVpeiBUeXBlIHwgUXVlc3Rpb25zIHwgRHVyYXRpb24gfCBQdXJwb3NlIHwKfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS18LS0tLS0tLS0tfAp8IFF1aWNrIFByYWN0aWNlIHwgMTAgfCAxNS0yMCBtaW4gfCBTaG9ydCBwcmFjdGljZSBzZXNzaW9uIHwKfCBTdGFuZGFyZCBQcmFjdGljZSB8IDIwIHwgMzAtNDAgbWluIHwgUmVndWxhciBwcmFjdGljZSBzZXNzaW9uIHwKfCBFeHRlbmRlZCBQcmFjdGljZSB8IDMwIHwgNDUtNjAgbWluIHwgRXh0ZW5kZWQgcHJhY3RpY2Ugc2Vzc2lvbiB8CnwgKipGdWxsIFByYWN0aWNlIEV4YW0qKiB8IDY1IHwgMTMwIG1pbiB8IENvbXBsZXRlIGV4YW0gc2ltdWxhdGlvbiB8CgojIyDwn5ug77iPIFRlY2hub2xvZ3kgU3RhY2sKCi0gKipGcm9udGVuZCoqOiBWYW5pbGxhIEphdmFTY3JpcHQsIEhUTUw1LCBDU1MzCi0gKipEYXRhIFN0b3JhZ2UqKjogSlNPTiBmaWxlcyAoc3RhdGljKQotICoqSW5mcmFzdHJ1Y3R1cmUqKjogVGVycmFmb3JtCi0gKipDSS9DRCoqOiBHaXRIdWIgQWN0aW9ucwotICoqSG9zdGluZyoqOiBHaXRIdWIgUGFnZXMgLyBOZXRsaWZ5IC8gVmVyY2VsCgojIyDwn5qAIFF1aWNrIFN0YXJ0CgoxLiAqKkNsb25lIHRoZSByZXBvc2l0b3J5KioKICAgYGBgYmFzaAogICBnaXQgY2xvbmUgPHJlcG9zaXRvcnktdXJsPgogICBjZCBBV1MtU0NTLUMwMwogICBgYGAKCjIuICoqT3BlbiBsb2NhbGx5KioKICAgYGBgYmFzaAogICAjIFNlcnZlIGZpbGVzIGxvY2FsbHkgKFB5dGhvbikKICAgcHl0aG9uIC1tIGh0dHAuc2VydmVyIDgwMDAKICAgCiAgICMgT3IgdXNlIE5vZGUuanMKICAgbnB4IHNlcnZlIC4KICAgYGBgCgozLiAqKkFjY2VzcyB0aGUgYXBwbGljYXRpb24qKgogICAtIE9wZW4gYGh0dHA6Ly9sb2NhbGhvc3Q6ODAwMGAgaW4geW91ciBicm93c2VyCiAgIC0gU2VsZWN0IGEgcXVpeiBsZW5ndGggYW5kIHN0YXJ0IHByYWN0aWNpbmchCgojIyDwn5SnIERldmVsb3BtZW50CgojIyMgQWRkaW5nIFF1ZXN0aW9ucwoKRWRpdCBgZGF0YS9xdWVzdGlvbnMuanNvbmAgdG8gYWRkIG5ldyBxdWVzdGlvbnM6CgpgYGBqc29uCnsKICAiaWQiOiAxMSwKICAidHlwZSI6ICJzaW5nbGUiLAogICJxdWVzdGlvbiI6ICJZb3VyIHF1ZXN0aW9uIHRleHQgaGVyZS4uLiIsCiAgIm9wdGlvbnMiOiBbCiAgICAiT3B0aW9uIEEiLAogICAgIk9wdGlvbiBCIiwgCiAgICAiT3B0aW9uIEMiLAogICAgIk9wdGlvbiBEIgogIF0sCiAgImNvcnJlY3QiOiBbMV0sCiAgImV4cGxhbmF0aW9uIjogIkV4cGxhbmF0aW9uIG9mIGNvcnJlY3QgYW5kIGluY29ycmVjdCBhbnN3ZXJzLi4uIiwKICAia2V5d29yZHMiOiBbImtleXdvcmQxIiwgImtleXdvcmQyIiwgImtleXdvcmQzIl0KfQpgYGAKCiMjIyBRdWVzdGlvbiBUeXBlcwoKLSAqKlNpbmdsZSBDaG9pY2UqKjogYCJ0eXBlIjogInNpbmdsZSJgLCBgImNvcnJlY3QiOiBbaW5kZXhdYAotICoqTXVsdGlwbGUgQ2hvaWNlKio6IGAidHlwZSI6ICJtdWx0aXBsZSJgLCBgImNvcnJlY3QiOiBbaW5kZXgxLCBpbmRleDJdYAoKIyMjIExvY2FsIFRlc3RpbmcKCmBgYGJhc2gKIyBWYWxpZGF0ZSBKU09OCnB5dGhvbiAtbSBqc29uLnRvb2wgZGF0YS9xdWVzdGlvbnMuanNvbgoKIyBDaGVjayBKYXZhU2NyaXB0IHN5bnRheApub2RlIC1jIGpzL3F1aXotZW5naW5lLmpzCgojIFJ1biBzZWN1cml0eSBzY2FuCmdyZXAgLXIgInBhc3N3b3JkXHxzZWNyZXRcfGtleSIgLS1pbmNsdWRlPSIqLmpzIiAuCmBgYAoKIyMg8J+MjSBEZXBsb3ltZW50CgojIyMgRW52aXJvbm1lbnQgQ29uZmlndXJhdGlvbgoKU2V0IHVwIEdpdEh1YiByZXBvc2l0b3J5IHZhcmlhYmxlczoKCnwgRW52aXJvbm1lbnQgfCBWYXJpYWJsZSB8IEV4YW1wbGUgVmFsdWUgfAp8LS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfC0tLS0tLS0tLS0tLS0tLXwKfCBEZXZlbG9wbWVudCB8IGBERVZfRE9NQUlOX05BTUVgIHwgYGRldi1xdWl6LmV4YW1wbGUuY29tYCB8CnwgUUEgfCBgUUFfRE9NQUlOX05BTUVgIHwgYHFhLXF1aXouZXhhbXBsZS5jb21gIHwKfCBQcm9kdWN0aW9uIHwgYFBST0RfRE9NQUlOX05BTUVgIHwgYHF1aXouZXhhbXBsZS5jb21gIHwKCiMjIyBEZXBsb3ltZW50IFByb2Nlc3MKCjEuICoqRGV2ZWxvcG1lbnQqKjogUHVzaCB0byBgZGV2YCBicmFuY2gg4oaSIEF1dG8tZGVwbG95IHRvIGRldiBlbnZpcm9ubWVudAoyLiAqKlFBKio6IFB1c2ggdG8gYHFhYCBicmFuY2gg4oaSIEF1dG8tZGVwbG95IHRvIFFBIGVudmlyb25tZW50ICAKMy4gKipQcm9kdWN0aW9uKio6IFB1c2ggdG8gYG1haW5gIGJyYW5jaCDihpIgQXV0by1kZXBsb3kgdG8gcHJvZHVjdGlvbgoKIyMjIEluZnJhc3RydWN0dXJlIGFzIENvZGUKCmBgYGJhc2gKY2QgdGVycmFmb3JtCgojIEdlbmVyYXRlIGVudmlyb25tZW50LXNwZWNpZmljIHZhcmlhYmxlcwpleHBvcnQgRE9NQUlOX05BTUU9InF1aXouZXhhbXBsZS5jb20iCmV4cG9ydCBFTlZJUk9OTUVOVD0icHJvZCIKZXhwb3J0IEJSQU5DSF9OQU1FPSJtYWluIgplbnZzdWJzdCA8IGVudmlyb25tZW50cy9lbnZpcm9ubWVudHMudGZ2YXJzID4gcHJvZC50ZnZhcnMKCiMgRGVwbG95IGluZnJhc3RydWN0dXJlCnRlcnJhZm9ybSBpbml0CnRlcnJhZm9ybSBwbGFuIC12YXItZmlsZT0icHJvZC50ZnZhcnMiCnRlcnJhZm9ybSBhcHBseSAtdmFyLWZpbGU9InByb2QudGZ2YXJzIgpgYGAKCiMjIPCfk4ogRmVhdHVyZXMgT3ZlcnZpZXcKCiMjIyBJbnRlcmFjdGl2ZSBRdWl6IEVsZW1lbnRzCgotIOKchSAqKlNob3cgQW5zd2VyKio6IFJldmVhbHMgY29ycmVjdC9pbmNvcnJlY3QgaW5kaWNhdG9ycyB3aXRoIGV4cGxhbmF0aW9ucwotIPCflI0gKipLZXkgV29yZHMqKjogSGlnaGxpZ2h0cyBpbXBvcnRhbnQgdGVybXMgaW4gcXVlc3Rpb25zCi0g8J+UhCAqKlJlc2V0Kio6IENsZWFycyBzZWxlY3Rpb25zIGFuZCByZXR1cm5zIHRvIG9yaWdpbmFsIHN0YXRlCi0g4o+x77iPICoqVGltZXJzKio6IFRyYWNrcyB0b3RhbCB0aW1lIGFuZCBwZXItcXVlc3Rpb24gdGltaW5nCi0g8J+TjSAqKk5hdmlnYXRpb24qKjogSnVtcCBiZXR3ZWVuIHF1ZXN0aW9ucyB3aXRoIHByb2dyZXNzIGluZGljYXRvcnMKCiMjIyBSZXN1bHRzICYgQW5hbHl0aWNzCgotIFNjb3JlIGNhbGN1bGF0aW9uIHdpdGggcGVyY2VudGFnZSBhbmQgZnJhY3Rpb24KLSBUaW1lIGFuYWx5c2lzICh0b3RhbCwgYXZlcmFnZSwgZmFzdGVzdCwgc2xvd2VzdCkKLSBQZXJmb3JtYW5jZSBicmVha2Rvd24gcGVyIHF1ZXN0aW9uCi0gQ29tcGxldGlvbiByYXRlIHRyYWNraW5nCi0gRGV0YWlsZWQgZXhwbGFuYXRpb25zIGZvciByZXZpZXcKCiMjIyBSZXNwb25zaXZlIERlc2lnbgoKLSBNb2JpbGUtZnJpZW5kbHkgaW50ZXJmYWNlCi0gQWRhcHRpdmUgbGF5b3V0cyBmb3IgZGlmZmVyZW50IHNjcmVlbiBzaXplcwotIFRvdWNoLWZyaWVuZGx5IG5hdmlnYXRpb24KLSBPcHRpbWl6ZWQgZm9yIGJvdGggZGVza3RvcCBhbmQgbW9iaWxlIHVzZQoKIyMg8J+UkiBTZWN1cml0eSBGZWF0dXJlcwoKLSBObyBzZW5zaXRpdmUgZGF0YSBzdG9yYWdlCi0gQ2xpZW50LXNpZGUgb25seSBwcm9jZXNzaW5nCi0gSFRUUFMgZW5mb3JjZW1lbnQKLSBJbnB1dCB2YWxpZGF0aW9uIGFuZCBzYW5pdGl6YXRpb24KLSBTZWN1cml0eSBzY2FubmluZyBpbiBDSS9DRCBwaXBlbGluZQoKIyMg8J+TiCBTY2FsYWJpbGl0eSBSb2FkbWFwCgojIyMgUGhhc2UgMTogU3RhdGljIEZvdW5kYXRpb24gKEN1cnJlbnQpCi0g4pyFIFN0YXRpYyBTUEEgd2l0aCBKU09OIGRhdGEKLSDinIUgTXVsdGktZW52aXJvbm1lbnQgZGVwbG95bWVudAotIOKchSBDb21wcmVoZW5zaXZlIHF1aXogZnVuY3Rpb25hbGl0eQoKIyMjIFBoYXNlIDI6IEVuaGFuY2VkIFVYCi0gVXNlciBwcm9ncmVzcyBwZXJzaXN0ZW5jZQotIE9mZmxpbmUgbW9kZSAoUFdBKQotIEFkdmFuY2VkIGFuYWx5dGljcwotIE11bHRpcGxlIGNlcnRpZmljYXRpb24gdHJhY2tzCgojIyMgUGhhc2UgMzogQmFja2VuZCBTZXJ2aWNlcwotIFVzZXIgYXV0aGVudGljYXRpb24KLSBQcm9ncmVzcyBzeW5jaHJvbml6YXRpb24KLSBBZHZhbmNlZCBxdWVzdGlvbiBtYW5hZ2VtZW50Ci0gUGVyZm9ybWFuY2UgaW5zaWdodHMKCiMjIyBQaGFzZSA0OiBGdWxsIFBsYXRmb3JtCi0gVXNlciBtYW5hZ2VtZW50Ci0gU3Vic2NyaXB0aW9uIG1vZGVsCi0gQWR2YW5jZWQgcmVwb3J0aW5nCi0gTXVsdGktdGVuYW50IGFyY2hpdGVjdHVyZQoKIyMg8J+knSBDb250cmlidXRpbmcKCjEuIEZvcmsgdGhlIHJlcG9zaXRvcnkKMi4gQ3JlYXRlIGEgZmVhdHVyZSBicmFuY2ggKGBnaXQgY2hlY2tvdXQgLWIgZmVhdHVyZS9hbWF6aW5nLWZlYXR1cmVgKQozLiBDb21taXQgeW91ciBjaGFuZ2VzIChgZ2l0IGNvbW1pdCAtbSAnQWRkIGFtYXppbmcgZmVhdHVyZSdgKQo0LiBQdXNoIHRvIHRoZSBicmFuY2ggKGBnaXQgcHVzaCBvcmlnaW4gZmVhdHVyZS9hbWF6aW5nLWZlYXR1cmVgKQo1LiBPcGVuIGEgUHVsbCBSZXF1ZXN0CgojIyDwn5OdIExpY2Vuc2UKClRoaXMgcHJvamVjdCBpcyBsaWNlbnNlZCB1bmRlciB0aGUgTUlUIExpY2Vuc2UgLSBzZWUgdGhlIFtMSUNFTlNFXShMSUNFTlNFKSBmaWxlIGZvciBkZXRhaWxzLgoKIyMg8J+GmCBTdXBwb3J0CgotIPCfk6cgRW1haWw6IHN1cHBvcnRAZXhhbXBsZS5jb20KLSDwn5CbIElzc3VlczogW0dpdEh1YiBJc3N1ZXNdKGh0dHBzOi8vZ2l0aHViLmNvbS95b3VyLXJlcG8vaXNzdWVzKQotIPCfk5YgRG9jdW1lbnRhdGlvbjogW1dpa2ldKGh0dHBzOi8vZ2l0aHViLmNvbS95b3VyLXJlcG8vd2lraSkKCi0tLQoKKipIYXBweSBMZWFybmluZyEg8J+OkyoqCgpQcmVwYXJlIGZvciB5b3VyIEFXUyBTZWN1cml0eSBTcGVjaWFsdHkgY2VydGlmaWNhdGlvbiB3aXRoIGNvbmZpZGVuY2UgdXNpbmcgdGhpcyBjb21wcmVoZW5zaXZlIHF1aXogcGxhdGZvcm0u
+﻿# AWS Security Specialty (SCS-C03) Quiz Platform
+
+A comprehensive, interactive quiz platform for AWS Security Specialty certification preparation with multi-environment deployment capabilities.
+
+## 🚀 Features
+
+- **Multiple Quiz Lengths**: 10, 20, 30, and 65-question options
+- **Interactive Learning**: Show Answer, Key Words highlighting, Reset functionality
+- **Dual Timer System**: Total quiz time and per-question timing
+- **Progress Tracking**: Navigation between questions with completion status
+- **Comprehensive Results**: Detailed analytics and performance breakdown
+- **Responsive Design**: Works on desktop and mobile devices
+- **Multi-Environment Deployment**: Dev, QA, and Production environments
+
+## 📁 Project Structure
+
+```
+AWS-SCS-C03/
+├── index.html                 # Landing page with quiz selection
+├── quiz.html                  # Main quiz interface
+├── results.html               # Quiz results and analytics
+├── data/
+│   ├── questions.json         # Master question pool
+│   └── config.json           # Quiz configurations
+├── js/
+│   ├── quiz-config.js         # Quiz length management
+│   ├── question-loader.js     # Random selection logic
+│   ├── quiz-engine.js         # Core quiz functionality
+│   ├── timer.js              # Timer system
+│   ├── progress.js           # Progress tracking
+│   └── results.js            # Results management
+├── css/
+│   └── styles.css            # Unified styling
+├── terraform/
+│   ├── main.tf               # Infrastructure definition
+│   └── environments/
+│       └── environments.tfvars # Template variables
+└── .github/workflows/
+    └── deploy.yml            # CI/CD pipeline
+```
+
+## 🎯 Quiz Options
+
+| Quiz Type | Questions | Duration | Purpose |
+|-----------|-----------|----------|---------|
+| Quick Practice | 10 | 15-20 min | Short practice session |
+| Standard Practice | 20 | 30-40 min | Regular practice session |
+| Extended Practice | 30 | 45-60 min | Extended practice session |
+| **Full Practice Exam** | 65 | 130 min | Complete exam simulation |
+
+## 🛠️ Technology Stack
+
+- **Frontend**: Vanilla JavaScript, HTML5, CSS3
+- **Data Storage**: JSON files (static)
+- **Infrastructure**: Terraform
+- **CI/CD**: GitHub Actions
+- **Hosting**: GitHub Pages / Netlify / Vercel
+
+## 🚀 Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd AWS-SCS-C03
+   ```
+
+2. **Open locally**
+   ```bash
+   # Serve files locally (Python)
+   python -m http.server 8000
+   
+   # Or use Node.js
+   npx serve .
+   ```
+
+3. **Access the application**
+   - Open `http://localhost:8000` in your browser
+   - Select a quiz length and start practicing!
+
+## 🔧 Development
+
+### Adding Questions
+
+Edit `data/questions.json` to add new questions:
+
+```json
+{
+  "id": 11,
+  "type": "single",
+  "question": "Your question text here...",
+  "options": [
+    "Option A",
+    "Option B", 
+    "Option C",
+    "Option D"
+  ],
+  "correct": [1],
+  "explanation": "Explanation of correct and incorrect answers...",
+  "keywords": ["keyword1", "keyword2", "keyword3"]
+}
+```
+
+### Question Types
+
+- **Single Choice**: `"type": "single"`, `"correct": [index]`
+- **Multiple Choice**: `"type": "multiple"`, `"correct": [index1, index2]`
+
+### Local Testing
+
+```bash
+# Validate JSON
+python -m json.tool data/questions.json
+
+# Check JavaScript syntax
+node -c js/quiz-engine.js
+
+# Run security scan
+grep -r "password\|secret\|key" --include="*.js" .
+```
+
+## 🌍 Deployment
+
+### Environment Configuration
+
+Set up GitHub repository variables:
+
+| Environment | Variable | Example Value |
+|-------------|----------|---------------|
+| Development | `DEV_DOMAIN_NAME` | `dev-quiz.example.com` |
+| QA | `QA_DOMAIN_NAME` | `qa-quiz.example.com` |
+| Production | `PROD_DOMAIN_NAME` | `quiz.example.com` |
+
+### Deployment Process
+
+1. **Development**: Push to `dev` branch → Auto-deploy to dev environment
+2. **QA**: Push to `qa` branch → Auto-deploy to QA environment  
+3. **Production**: Push to `main` branch → Auto-deploy to production
+
+### Infrastructure as Code
+
+```bash
+cd terraform
+
+# Generate environment-specific variables
+export DOMAIN_NAME="quiz.example.com"
+export ENVIRONMENT="prod"
+export BRANCH_NAME="main"
+envsubst < environments/environments.tfvars > prod.tfvars
+
+# Deploy infrastructure
+terraform init
+terraform plan -var-file="prod.tfvars"
+terraform apply -var-file="prod.tfvars"
+```
+
+## 📊 Features Overview
+
+### Interactive Quiz Elements
+
+- ✅ **Show Answer**: Reveals correct/incorrect indicators with explanations
+- 🔍 **Key Words**: Highlights important terms in questions
+- 🔄 **Reset**: Clears selections and returns to original state
+- ⏱️ **Timers**: Tracks total time and per-question timing
+- 📍 **Navigation**: Jump between questions with progress indicators
+
+### Results & Analytics
+
+- Score calculation with percentage and fraction
+- Time analysis (total, average, fastest, slowest)
+- Performance breakdown per question
+- Completion rate tracking
+- Detailed explanations for review
+
+### Responsive Design
+
+- Mobile-friendly interface
+- Adaptive layouts for different screen sizes
+- Touch-friendly navigation
+- Optimized for both desktop and mobile use
+
+## 🔒 Security Features
+
+- No sensitive data storage
+- Client-side only processing
+- HTTPS enforcement
+- Input validation and sanitization
+- Security scanning in CI/CD pipeline
+
+## 📈 Scalability Roadmap
+
+### Phase 1: Static Foundation (Current)
+- ✅ Static SPA with JSON data
+- ✅ Multi-environment deployment
+- ✅ Comprehensive quiz functionality
+
+### Phase 2: Enhanced UX
+- User progress persistence
+- Offline mode (PWA)
+- Advanced analytics
+- Multiple certification tracks
+
+### Phase 3: Backend Services
+- User authentication
+- Progress synchronization
+- Advanced question management
+- Performance insights
+
+### Phase 4: Full Platform
+- User management
+- Subscription model
+- Advanced reporting
+- Multi-tenant architecture
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- 📧 Email: support@example.com
+- 🐛 Issues: [GitHub Issues](https://github.com/your-repo/issues)
+- 📖 Documentation: [Wiki](https://github.com/your-repo/wiki)
+
+---
+
+**Happy Learning! 🎓**
+
+Prepare for your AWS Security Specialty certification with confidence using this comprehensive quiz platform.
