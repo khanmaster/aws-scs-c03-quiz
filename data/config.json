@@ -1,0 +1,30 @@
+{
+  "quizLengths": {
+    "10": {
+      "name": "Quick Practice",
+      "duration": "15-20 minutes",
+      "description": "Short practice session"
+    },
+    "20": {
+      "name": "Standard Practice", 
+      "duration": "30-40 minutes",
+      "description": "Regular practice session"
+    },
+    "30": {
+      "name": "Extended Practice",
+      "duration": "45-60 minutes", 
+      "description": "Extended practice session"
+    },
+    "65": {
+      "name": "Full Practice Exam",
+      "duration": "130 minutes",
+      "description": "Complete exam simulation"
+    }
+  },
+  "settings": {
+    "randomizeQuestions": true,
+    "showProgressBar": true,
+    "enableTimers": true,
+    "autoSave": true
+  }
+}
