@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
     <title>AWS Security Specialty (SCS-C03) Quiz Platform</title>
-    <link rel="stylesheet" href="css/styles.css?v=6">
+    <link rel="stylesheet" href="css/styles.css?v=7">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#667eea">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -137,17 +137,24 @@
         
         function toggleMobileMenu() {
             const mobileDropdown = document.getElementById('mobileDropdown');
-            mobileDropdown.classList.toggle('active');
+            if (mobileDropdown) {
+                mobileDropdown.classList.toggle('active');
+            }
         }
         
-        // Close mobile dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            const mobileDropdown = document.getElementById('mobileDropdown');
-            const toggleButton = document.querySelector('.mobile-menu-toggle');
-            
-            if (!toggleButton.contains(event.target) && !mobileDropdown.contains(event.target)) {
-                mobileDropdown.classList.remove('active');
-            }
+        // Initialize after DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close mobile dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const mobileDropdown = document.getElementById('mobileDropdown');
+                const toggleButton = document.querySelector('.mobile-menu-toggle');
+                
+                if (mobileDropdown && toggleButton) {
+                    if (!toggleButton.contains(event.target) && !mobileDropdown.contains(event.target)) {
+                        mobileDropdown.classList.remove('active');
+                    }
+                }
+            });
         });
         
         if ('serviceWorker' in navigator) {
