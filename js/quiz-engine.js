@@ -90,11 +90,13 @@ class QuizEngine {
             titleElement.textContent = `Question ${window.progressTracker.currentQuestion + 1}`;
         }
 
-        // Update question text
+        // Update question text with XSS protection
         const textElement = document.getElementById('questionText');
         if (textElement) {
-            textElement.innerHTML = question.question;
-            this.originalQuestionText = question.question;
+            // Sanitize question text to prevent XSS
+            const sanitizedQuestion = this.escapeHtml(question.question);
+            textElement.innerHTML = sanitizedQuestion;
+            this.originalQuestionText = sanitizedQuestion;
         }
 
         // Create answer options
@@ -214,7 +216,8 @@ class QuizEngine {
     showExplanation() {
         const explanationElement = document.getElementById('explanation');
         if (explanationElement && this.currentQuestionData.explanation) {
-            explanationElement.innerHTML = `<h4>Explanation:</h4><p>${this.currentQuestionData.explanation}</p>`;
+            const sanitizedExplanation = this.escapeHtml(this.currentQuestionData.explanation);
+            explanationElement.innerHTML = `<h4>Explanation:</h4><p>${sanitizedExplanation}</p>`;
             explanationElement.style.display = 'block';
         }
     }
@@ -233,8 +236,10 @@ class QuizEngine {
         let highlightedText = this.originalQuestionText;
         
         keywords.forEach(keyword => {
-            const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
-            highlightedText = highlightedText.replace(regex, `<span class="keyword-highlight">${this.escapeHtml(keyword)}</span>`);
+            // Sanitize keyword to prevent code injection
+            const sanitizedKeyword = this.escapeHtml(keyword);
+            const regex = new RegExp(`\\b${sanitizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+            highlightedText = highlightedText.replace(regex, `<span class="keyword-highlight">${sanitizedKeyword}</span>`);
         });
         
         textElement.innerHTML = highlightedText;

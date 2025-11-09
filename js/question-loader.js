@@ -10,17 +10,31 @@ class QuestionLoader {
         try {
             const response = await fetch('data/questions.json');
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`Failed to load questions: HTTP ${response.status}`);
             }
             const data = await response.json();
             if (!data.questions || !Array.isArray(data.questions)) {
                 throw new Error('Invalid questions data format');
             }
-            this.questions = data.questions;
+            
+            // Validate each question has required fields
+            const validQuestions = data.questions.filter(q => {
+                return q.id && q.question && q.options && q.correct !== undefined && q.explanation;
+            });
+            
+            if (validQuestions.length === 0) {
+                throw new Error('No valid questions found');
+            }
+            
+            this.questions = validQuestions;
+            console.log(`Loaded ${this.questions.length} valid questions`);
         } catch (error) {
             console.error('Error loading questions:', error);
             this.questions = [];
-            // Could show user-friendly error message here
+            // Show user-friendly error message
+            if (typeof window !== 'undefined' && window.alert) {
+                alert('Failed to load quiz questions. Please refresh the page and try again.');
+            }
         }
     }
 
@@ -34,16 +48,27 @@ class QuestionLoader {
     }
 
     selectQuestions(count) {
-        if (this.questions.length === 0) {
-            console.error('No questions available');
+        try {
+            if (this.questions.length === 0) {
+                console.error('No questions available');
+                return [];
+            }
+            
+            if (!Number.isInteger(count) || count <= 0) {
+                console.error('Invalid question count:', count);
+                return [];
+            }
+
+            const availableQuestions = [...this.questions];
+            const shuffled = this.shuffleArray(availableQuestions);
+            this.selectedQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
+            
+            console.log(`Selected ${this.selectedQuestions.length} questions out of ${count} requested`);
+            return this.selectedQuestions;
+        } catch (error) {
+            console.error('Error selecting questions:', error);
             return [];
         }
-
-        const availableQuestions = [...this.questions];
-        const shuffled = this.shuffleArray(availableQuestions);
-        this.selectedQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
-        
-        return this.selectedQuestions;
     }
 
     getQuestion(index) {
