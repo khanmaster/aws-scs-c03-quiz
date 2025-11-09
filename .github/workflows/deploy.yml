@@ -144,5 +144,6 @@ jobs:
           echo "- **Branch**: main" >> $GITHUB_STEP_SUMMARY
           echo "- **Platform**: GitHub Pages" >> $GITHUB_STEP_SUMMARY
           echo "- **Website URL**: https://khanmaster.github.io/aws-scs-c03-quiz/" >> $GITHUB_STEP_SUMMARY
+          echo "- **PWA App**: Visit website → Click 'Install App' button or browser install prompt" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
