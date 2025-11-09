@@ -9,6 +9,9 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#667eea">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AWS SCS Quiz">
 </head>
 <body>
     <nav class="navbar">
@@ -129,8 +132,17 @@
         }
         
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js');
+            navigator.serviceWorker.register('/aws-scs-c03-quiz/sw.js');
         }
+        
+        // PWA install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show install button or prompt
+            console.log('PWA install prompt available');
+        });
     </script>
 </body>
 </html>

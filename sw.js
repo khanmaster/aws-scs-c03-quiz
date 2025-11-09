@@ -1,19 +1,19 @@
-const CACHE_NAME = 'aws-scs-quiz-v1';
+const CACHE_NAME = 'aws-scs-quiz-v2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/quiz.html',
-  '/results.html',
-  '/css/styles.css',
-  '/js/quiz-config.js',
-  '/js/question-loader.js',
-  '/js/quiz-engine.js',
-  '/js/timer.js',
-  '/js/progress.js',
-  '/js/results.js',
-  '/js/utils.js',
-  '/data/questions.json',
-  '/data/config.json'
+  '/aws-scs-c03-quiz/',
+  '/aws-scs-c03-quiz/index.html',
+  '/aws-scs-c03-quiz/quiz.html',
+  '/aws-scs-c03-quiz/results.html',
+  '/aws-scs-c03-quiz/css/styles.css',
+  '/aws-scs-c03-quiz/js/quiz-config.js',
+  '/aws-scs-c03-quiz/js/question-loader.js',
+  '/aws-scs-c03-quiz/js/quiz-engine.js',
+  '/aws-scs-c03-quiz/js/timer.js',
+  '/aws-scs-c03-quiz/js/progress.js',
+  '/aws-scs-c03-quiz/js/results.js',
+  '/aws-scs-c03-quiz/js/utils.js',
+  '/aws-scs-c03-quiz/data/questions.json',
+  '/aws-scs-c03-quiz/data/config.json'
 ];
 
 self.addEventListener('install', event => {
