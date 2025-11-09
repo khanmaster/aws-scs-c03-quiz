@@ -7,10 +7,30 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">AWS Cert Prep</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Available Tests</a>
+                    <div class="dropdown-content">
+                        <a href="index.html" class="dropdown-item">Security Specialty (SCS-C03)</a>
+                        <a href="#" class="dropdown-item">Solutions Architect (Coming Soon)</a>
+                        <a href="#" class="dropdown-item">Developer Associate (Coming Soon)</a>
+                        <a href="#" class="dropdown-item">SysOps Administrator (Coming Soon)</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
     <div class="container">
         <header class="quiz-header">
             <div class="quiz-info">
-                <h1>AWS Security Specialty Quiz</h1>
+                <h1>AWS Security Specialty Certification Exam Practice</h1>
                 <div class="quiz-stats">
                     <span id="questionProgress">Question 1 of 10</span>
                     <span id="totalTimer">Total Time: 00:00</span>
@@ -64,5 +84,11 @@
     <script src="js/timer.js"></script>
     <script src="js/progress.js"></script>
     <script src="js/quiz-engine.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
