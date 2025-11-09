@@ -113,6 +113,7 @@
         flex-direction: column;
         padding: 1rem;
         box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        z-index: 1002;
     }
     
     .nav-menu.active {
@@ -125,6 +126,11 @@
         box-shadow: none;
         background: #f8f9fa;
         margin-top: 0.5rem;
+        z-index: 1003;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
     }
 }
 
