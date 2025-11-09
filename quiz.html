@@ -5,30 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
     <title>AWS SCS-C03 Quiz</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=12">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#667eea">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">AWS Cert Prep</a>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="index.html" class="nav-link" role="menuitem">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link">Available Tests</a>
-                    <div class="dropdown-content">
-                        <a href="index.html" class="dropdown-item">Security Specialty (SCS-C03)</a>
-                        <a href="#" class="dropdown-item">Solutions Architect (Coming Soon)</a>
-                        <a href="#" class="dropdown-item">Developer Associate (Coming Soon)</a>
-                        <a href="#" class="dropdown-item">SysOps Administrator (Coming Soon)</a>
+                <li class="nav-item dropdown" role="none">
+                    <a href="#" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" id="tests-menu-button">Tests</a>
+                    <div class="dropdown-content" role="menu" aria-labelledby="tests-menu-button">
+                        <a href="index.html" class="dropdown-item" role="menuitem">Security Specialty (SCS-C03)</a>
+                        <a href="#" class="dropdown-item" role="menuitem" aria-disabled="true">Solutions Architect (Coming Soon)</a>
+                        <a href="#" class="dropdown-item" role="menuitem" aria-disabled="true">Developer Associate (Coming Soon)</a>
+                        <a href="#" class="dropdown-item" role="menuitem" aria-disabled="true">SysOps Administrator (Coming Soon)</a>
                     </div>
                 </li>
             </ul>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <div class="mobile-menu-container">
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" id="mobile-menu-button">
+                    <span class="hamburger-icon" aria-hidden="true">☰</span>
+                </button>
+                <div class="mobile-dropdown-menu" id="mobileDropdown" role="menu" aria-labelledby="mobile-menu-button">
+                    <h4 class="mobile-menu-title">Available Tests</h4>
+                    <a href="index.html" class="mobile-dropdown-item" role="menuitem">Security Specialty (SCS-C03)</a>
+                    <a href="#" class="mobile-dropdown-item" role="menuitem" aria-disabled="true">Solutions Architect (Coming Soon)</a>
+                    <a href="#" class="mobile-dropdown-item" role="menuitem" aria-disabled="true">Developer Associate (Coming Soon)</a>
+                    <a href="#" class="mobile-dropdown-item" role="menuitem" aria-disabled="true">SysOps Administrator (Coming Soon)</a>
+                </div>
+            </div>
         </div>
     </nav>
     <div class="container">
@@ -88,15 +99,6 @@
     <script src="js/timer.js"></script>
     <script src="js/progress.js"></script>
     <script src="js/quiz-engine.js"></script>
-    <script>
-        function toggleMobileMenu() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.classList.toggle('active');
-        }
-        
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js');
-        }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
