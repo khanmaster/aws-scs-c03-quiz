@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
     <title>AWS Security Specialty (SCS-C03) Quiz Platform</title>
-    <link rel="stylesheet" href="css/styles.css?v=9">
+    <link rel="stylesheet" href="css/styles.css?v=11">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#667eea">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -14,31 +14,31 @@
     <meta name="apple-mobile-web-app-title" content="AWS SCS Quiz">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
+            <a href="index.html" class="home-link" aria-label="Go to home page">Home</a>
             <a href="index.html" class="nav-brand">AWS Cert Prep</a>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link">Available Tests</a>
-                    <div class="dropdown-content">
-                        <a href="index.html" class="dropdown-item">Security Specialty (SCS-C03)</a>
-                        <a href="#" class="dropdown-item">Solutions Architect (Coming Soon)</a>
-                        <a href="#" class="dropdown-item">Developer Associate (Coming Soon)</a>
-                        <a href="#" class="dropdown-item">SysOps Administrator (Coming Soon)</a>
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item dropdown" role="none">
+                    <a href="#" class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" id="tests-menu-button">Available Tests</a>
+                    <div class="dropdown-content" role="menu" aria-labelledby="tests-menu-button">
+                        <a href="index.html" class="dropdown-item" role="menuitem">Security Specialty (SCS-C03)</a>
+                        <a href="#" class="dropdown-item" role="menuitem" aria-disabled="true">Solutions Architect (Coming Soon)</a>
+                        <a href="#" class="dropdown-item" role="menuitem" aria-disabled="true">Developer Associate (Coming Soon)</a>
+                        <a href="#" class="dropdown-item" role="menuitem" aria-disabled="true">SysOps Administrator (Coming Soon)</a>
                     </div>
                 </li>
             </ul>
             <div class="mobile-menu-container">
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
-                <div class="mobile-dropdown-menu" id="mobileDropdown">
-                    <h4 style="margin-bottom: 1rem; color: #667eea;">Available Tests</h4>
-                    <a href="index.html" class="mobile-dropdown-item">Security Specialty (SCS-C03)</a>
-                    <a href="#" class="mobile-dropdown-item">Solutions Architect (Coming Soon)</a>
-                    <a href="#" class="mobile-dropdown-item">Developer Associate (Coming Soon)</a>
-                    <a href="#" class="mobile-dropdown-item">SysOps Administrator (Coming Soon)</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" id="mobile-menu-button">
+                    <span class="hamburger-icon" aria-hidden="true">☰</span>
+                </button>
+                <div class="mobile-dropdown-menu" id="mobileDropdown" role="menu" aria-labelledby="mobile-menu-button">
+                    <h4 class="mobile-menu-title">Available Tests</h4>
+                    <a href="index.html" class="mobile-dropdown-item" role="menuitem">Security Specialty (SCS-C03)</a>
+                    <a href="#" class="mobile-dropdown-item" role="menuitem" aria-disabled="true">Solutions Architect (Coming Soon)</a>
+                    <a href="#" class="mobile-dropdown-item" role="menuitem" aria-disabled="true">Developer Associate (Coming Soon)</a>
+                    <a href="#" class="mobile-dropdown-item" role="menuitem" aria-disabled="true">SysOps Administrator (Coming Soon)</a>
                 </div>
             </div>
         </div>
@@ -49,59 +49,58 @@
             <h2>Practice Quiz Platform</h2>
         </header>
 
-        <main class="quiz-selection">
-            <div class="quiz-options">
-                <h3>Select Quiz Length</h3>
+        <main class="quiz-selection" role="main">
+            <section class="quiz-options" aria-labelledby="quiz-selection-title">
+                <h3 id="quiz-selection-title">Select Practice Test</h3>
                 
-                <div class="quiz-card" data-questions="10">
-                    <h4>Quick Practice</h4>
-                    <p>10 Questions</p>
-                    <span class="duration">15-20 minutes</span>
-                    <button onclick="startQuiz(10)">Start Quiz</button>
-                </div>
+                <article class="quiz-card" data-quiz-type="quiz1">
+                    <header class="quiz-card-header">
+                        <h4>Practice Test 1</h4>
+                        <p class="question-count">20 Questions</p>
+                        <span class="duration">40 minutes</span>
+                    </header>
+                    <button class="quiz-start-btn" data-quiz="quiz1" aria-describedby="test1-desc">
+                        Start Test 1
+                        <span id="test1-desc" class="sr-only">20 questions, approximately 40 minutes</span>
+                    </button>
+                </article>
 
-                <div class="quiz-card" data-questions="20">
-                    <h4>Standard Practice</h4>
-                    <p>20 Questions</p>
-                    <span class="duration">30-40 minutes</span>
-                    <button onclick="startQuiz(20)">Start Quiz</button>
-                </div>
+                <article class="quiz-card" data-quiz-type="quiz2">
+                    <header class="quiz-card-header">
+                        <h4>Practice Test 2</h4>
+                        <p class="question-count">20 Questions</p>
+                        <span class="duration">40 minutes</span>
+                    </header>
+                    <button class="quiz-start-btn" data-quiz="quiz2" aria-describedby="test2-desc">
+                        Start Test 2
+                        <span id="test2-desc" class="sr-only">20 questions, approximately 40 minutes</span>
+                    </button>
+                </article>
 
-                <div class="quiz-card" data-questions="30">
-                    <h4>Extended Practice</h4>
-                    <p>30 Questions</p>
-                    <span class="duration">45-60 minutes</span>
-                    <button onclick="startQuiz(30)">Start Quiz</button>
-                </div>
+                <article class="quiz-card" data-quiz-type="quiz3">
+                    <header class="quiz-card-header">
+                        <h4>Practice Test 3</h4>
+                        <p class="question-count">25 Questions</p>
+                        <span class="duration">50 minutes</span>
+                    </header>
+                    <button class="quiz-start-btn" data-quiz="quiz3" aria-describedby="test3-desc">
+                        Start Test 3
+                        <span id="test3-desc" class="sr-only">25 questions, approximately 50 minutes</span>
+                    </button>
+                </article>
 
-                <div class="quiz-card" data-questions="quiz1">
-                    <h4>Practice Test 1</h4>
-                    <p>20 Questions</p>
-                    <span class="duration">40 minutes</span>
-                    <button onclick="startSpecificQuiz('quiz1')">Start Test 1</button>
-                </div>
-
-                <div class="quiz-card" data-questions="quiz2">
-                    <h4>Practice Test 2</h4>
-                    <p>20 Questions</p>
-                    <span class="duration">40 minutes</span>
-                    <button onclick="startSpecificQuiz('quiz2')">Start Test 2</button>
-                </div>
-
-                <div class="quiz-card" data-questions="quiz3">
-                    <h4>Practice Test 3</h4>
-                    <p>25 Questions</p>
-                    <span class="duration">50 minutes</span>
-                    <button onclick="startSpecificQuiz('quiz3')">Start Test 3</button>
-                </div>
-
-                <div class="quiz-card featured" data-questions="65">
-                    <h4>Full Practice Exam</h4>
-                    <p>65 Questions</p>
-                    <span class="duration">130 minutes</span>
-                    <button onclick="startQuiz(65)">Start Full Exam</button>
-                </div>
-            </div>
+                <article class="quiz-card featured" data-quiz-type="full">
+                    <header class="quiz-card-header">
+                        <h4>Full Practice Exam</h4>
+                        <p class="question-count">65 Questions</p>
+                        <span class="duration">130 minutes</span>
+                    </header>
+                    <button class="quiz-start-btn" data-quiz="full" aria-describedby="full-exam-desc">
+                        Start Full Exam
+                        <span id="full-exam-desc" class="sr-only">65 questions, approximately 130 minutes</span>
+                    </button>
+                </article>
+            </section>
         </main>
 
         <footer>
@@ -110,65 +109,6 @@
     </div>
 
     <script src="js/quiz-config.js"></script>
-    <script>
-        function startQuiz(questionCount) {
-            localStorage.setItem('quizConfig', JSON.stringify({
-                questionCount: questionCount,
-                startTime: Date.now()
-            }));
-            window.location.href = 'quiz.html';
-        }
-        
-        function startSpecificQuiz(quizType) {
-            const quizConfigs = {
-                'quiz1': { questionCount: 20, dataFile: 'quiz1-20questions.json' },
-                'quiz2': { questionCount: 20, dataFile: 'quiz2-20questions.json' },
-                'quiz3': { questionCount: 25, dataFile: 'quiz3-25questions.json' }
-            };
-            
-            const config = quizConfigs[quizType];
-            localStorage.setItem('quizConfig', JSON.stringify({
-                questionCount: config.questionCount,
-                dataFile: config.dataFile,
-                startTime: Date.now()
-            }));
-            window.location.href = 'quiz.html';
-        }
-        
-        function toggleMobileMenu() {
-            const mobileDropdown = document.getElementById('mobileDropdown');
-            if (mobileDropdown) {
-                mobileDropdown.classList.toggle('active');
-            }
-        }
-        
-        // Initialize after DOM loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Close mobile dropdown when clicking outside
-            document.addEventListener('click', function(event) {
-                const mobileDropdown = document.getElementById('mobileDropdown');
-                const toggleButton = document.querySelector('.mobile-menu-toggle');
-                
-                if (mobileDropdown && toggleButton) {
-                    if (!toggleButton.contains(event.target) && !mobileDropdown.contains(event.target)) {
-                        mobileDropdown.classList.remove('active');
-                    }
-                }
-            });
-        });
-        
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/aws-scs-c03-quiz/sw.js');
-        }
-        
-        // PWA install prompt
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            // Show install button or prompt
-            console.log('PWA install prompt available');
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
