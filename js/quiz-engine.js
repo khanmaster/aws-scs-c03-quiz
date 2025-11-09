@@ -177,7 +177,6 @@ class QuizEngine {
         
         // Update button states
         document.getElementById('showAnswerBtn').style.display = 'none';
-        document.getElementById('keyWordsBtn').style.display = 'inline-block';
         document.getElementById('resetBtn').style.display = 'inline-block';
     }
 
@@ -286,7 +285,7 @@ class QuizEngine {
 
     resetButtonStates() {
         document.getElementById('showAnswerBtn').style.display = 'inline-block';
-        document.getElementById('keyWordsBtn').style.display = 'none';
+        document.getElementById('keyWordsBtn').style.display = 'inline-block';
         document.getElementById('resetBtn').style.display = 'none';
     }
 
