@@ -2,7 +2,7 @@
   "name": "AWS Security Specialty Certification Exam Practice",
   "short_name": "AWS SCS Quiz",
   "description": "Practice quiz for AWS Security Specialty (SCS-C03) certification exam",
-  "start_url": "/",
+  "start_url": "/aws-scs-c03-quiz/",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#667eea",
