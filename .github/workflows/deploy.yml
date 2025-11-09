@@ -106,7 +106,7 @@ jobs:
           
           # Check for sensitive data patterns
           echo "Checking for sensitive patterns..."
-          if grep -r -i "password\|secret\|key\|token" --include="*.js" --include="*.html" --include="*.json" . | grep -v "// " | grep -v "<!-- " | grep -v "explanation" | grep -v "keywords" | grep -v "KMS" | grep -v "CMK" | grep -v "IAM" | grep -v "quiz" | grep -v "question" | grep -v "data/questions.json" | grep -v "localStorage" | grep -v "Object.keys" | grep -v "STORAGE_KEYS" | grep -v "get(key)" | grep -v "set(key" | grep -v "remove(key)" | grep -v "KEYWORD_HIGHLIGHT" | grep -v "keyboard" | grep -v "keydown" | grep -v "event.key"; then
+          if grep -r -i "password\|secret\|key\|token" --include="*.js" --include="*.html" --include="*.json" . | grep -v "// " | grep -v "<!-- " | grep -v "explanation" | grep -v "keywords" | grep -v "KMS" | grep -v "CMK" | grep -v "IAM" | grep -v "quiz" | grep -v "question" | grep -v "data/questions.json" | grep -v "localStorage" | grep -v "Object.keys" | grep -v "STORAGE_KEYS" | grep -v "get(key)" | grep -v "set(key" | grep -v "remove(key)" | grep -v "KEYWORD_HIGHLIGHT" | grep -v "keyboard" | grep -v "keydown" | grep -v "event.key" | grep -v "KeyboardNavigation" | grep -v "handleKeyboard"; then
             echo "❌ Potential sensitive data found"
             exit 1
           fi
