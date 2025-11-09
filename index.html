@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
     <title>AWS Security Specialty (SCS-C03) Quiz Platform</title>
-    <link rel="stylesheet" href="css/styles.css?v=5">
+    <link rel="stylesheet" href="css/styles.css?v=6">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#667eea">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -31,7 +31,16 @@
                     </div>
                 </li>
             </ul>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <div class="mobile-menu-container">
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                <div class="mobile-dropdown-menu" id="mobileDropdown">
+                    <h4 style="margin-bottom: 1rem; color: #667eea;">Available Tests</h4>
+                    <a href="index.html" class="mobile-dropdown-item">Security Specialty (SCS-C03)</a>
+                    <a href="#" class="mobile-dropdown-item">Solutions Architect (Coming Soon)</a>
+                    <a href="#" class="mobile-dropdown-item">Developer Associate (Coming Soon)</a>
+                    <a href="#" class="mobile-dropdown-item">SysOps Administrator (Coming Soon)</a>
+                </div>
+            </div>
         </div>
     </nav>
     <div class="container">
@@ -127,22 +136,18 @@
         }
         
         function toggleMobileMenu() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.classList.toggle('active');
+            const mobileDropdown = document.getElementById('mobileDropdown');
+            mobileDropdown.classList.toggle('active');
         }
         
-        // Handle mobile dropdown clicks
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdowns = document.querySelectorAll('.dropdown');
-            dropdowns.forEach(dropdown => {
-                const dropdownLink = dropdown.querySelector('.nav-link');
-                if (dropdownLink && window.innerWidth <= 768) {
-                    dropdownLink.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    });
-                }
-            });
+        // Close mobile dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileDropdown = document.getElementById('mobileDropdown');
+            const toggleButton = document.querySelector('.mobile-menu-toggle');
+            
+            if (!toggleButton.contains(event.target) && !mobileDropdown.contains(event.target)) {
+                mobileDropdown.classList.remove('active');
+            }
         });
         
         if ('serviceWorker' in navigator) {
