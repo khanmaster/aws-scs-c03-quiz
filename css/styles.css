@@ -134,6 +134,18 @@
         display: block;
         width: 100%;
         text-align: left;
+        background: #667eea;
+        color: white;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+    }
+    
+    .nav-link:hover {
+        background: #5a6fd8;
+        transform: none;
     }
     
     .dropdown-content {
@@ -144,6 +156,14 @@
         margin-top: 0.5rem;
         border-radius: 4px;
         padding: 0.5rem 0;
+    }
+    
+    .dropdown-content .dropdown-item {
+        color: #333;
+        background: transparent;
+        box-shadow: none;
+        margin-bottom: 0;
+        padding: 0.5rem 1rem;
     }
     
     .dropdown.active .dropdown-content {
