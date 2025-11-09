@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">AWS Cert Prep</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Available Tests</a>
+                    <div class="dropdown-content">
+                        <a href="index.html" class="dropdown-item">Security Specialty (SCS-C03)</a>
+                        <a href="#" class="dropdown-item">Solutions Architect (Coming Soon)</a>
+                        <a href="#" class="dropdown-item">Developer Associate (Coming Soon)</a>
+                        <a href="#" class="dropdown-item">SysOps Administrator (Coming Soon)</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
     <div class="container">
         <header>
             <h1>AWS Security Specialty Certification</h1>
@@ -60,6 +80,11 @@
                 startTime: Date.now()
             }));
             window.location.href = 'quiz.html';
+        }
+        
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
         }
     </script>
 </body>
